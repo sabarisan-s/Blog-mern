@@ -1,24 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({_id, title, content, summary, cover, createdAt, author }) => {
     return (
         <div className="post">
             <div className="image">
-                <img src="" alt="" className="" />
+                <Link to={`/post/${_id}`}>
+                    <img
+                        src={`http://localhost:8000/${cover}`}
+                        alt=""
+                        className=""
+                    />
+                </Link>
             </div>
             <div className="texts">
-                <h2 className="">
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h2>
+                <Link to={`/post/${_id}`}>
+                    <h2 className=""> {title}</h2>
+                </Link>
                 <p className="info">
-                    <a href="">lorem</a>
-                    <span>2023-02-1</span>{" "}
+                    <a>{author.userName}</a>
+                    <span>{createdAt?.split("T")[0]}</span>{" "}
                 </p>
-                <p className="summary">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Deserunt unde quibusdam rerum aperiam, hic tenetur!
-                </p>
+                <p className="summary">{summary}</p>
             </div>
         </div>
     );
